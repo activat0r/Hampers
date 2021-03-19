@@ -1,0 +1,10 @@
+.right-position{
+    position: absolute;
+    right: 250px;
+    top:250px;
+    transform: scale(2);
+}
+
+.image-resize{
+    overflow: auto;
+}
