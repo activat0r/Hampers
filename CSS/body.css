@@ -2,7 +2,6 @@
 .initial-title{
     display: inline-block;
     opacity: 0;
-
     transition: all 0.5s ease-in;
     transform: translateY(20px);
 }
@@ -14,14 +13,60 @@
 
 }
 
-.title-design-start{
-    left: 50px;
+.cart_counter_group{
     display: inline-block;
-    text-align: left;
+    right: 10px;
+    position: absolute;
+    color:#f67569;
+    bottom: 22px;
+    border-width: 1px;
+    border-color: #010101;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.cart_counter{
+    width: 30px;
+    display: inline-block;
+    text-align: center;
+}
+
+.cart_counter_btn{
+    width: 20px;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    background-color: #f67569; 
+}
+
+.cart_counter_btn:hover{
+    background-color: #d4675d;
+}
+
+.cart_counter_btn_left{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.cart_counter_btn_right{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+}
+
+
+.title-design-start{
     font-size: 3rem;
     line-height: 100vh;
     color: #f67569;
 }
+.title-center{    
+    text-align: center;
+}
+.shop-cards{
+    margin-bottom:1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.247);
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -30,9 +75,10 @@
 .down-arrow{
     height: 40px;
     width: 40px; 
-    position: absolute; 
+    position: relative; 
     bottom: 60px; 
     left: 50%; 
+    transform: translateX(-50%);
     animation-duration: 1s;
     animation-timing-function:linear;
     animation-name: downArrowAnimation;
