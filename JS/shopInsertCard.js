@@ -2,7 +2,7 @@ const grid = document.getElementById("card-grid");
 
 for(let i=0;i<6;i++){
     grid.innerHTML +=  `<div class=" col-sm-12 col-md-4 justify-content-center"><div class='card  shop-cards'>
-    <img src="./../Images/chocolate_hamper.jpg" class="card-img-top"  alt="hamper image">
+    <img src="./Images/chocolate_hamper.jpg" class="card-img-top"  alt="hamper image">
     <div class="card-body">
     <h5 class='card-title' id="card_title_`+i+`">Hamper `+i+`</h5>
     <p class="card-text">Description for the hamper</p>
