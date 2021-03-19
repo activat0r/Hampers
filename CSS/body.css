@@ -13,6 +13,7 @@
 
 }
 
+
 .cart_counter_group{
     display: inline-block;
     right: 10px;
@@ -65,7 +66,39 @@
 .shop-cards{
     margin-bottom:1rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.247);
+    width: 14rem;
 }
+
+@media (max-width: 576px) { 
+    .shop-cards{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.247);
+    }
+}
+.cart-top-layout{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    display: inline-block;
+  
+}
+.cart-top-icon{
+    font-size: x-large;
+
+}
+
+.cart-top-count{
+    position: relative;
+    bottom: 40px;
+    left: 15px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
 
 *{
     box-sizing: border-box;
