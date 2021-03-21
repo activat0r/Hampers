@@ -1,4 +1,10 @@
+
+const cart = document.getElementById("cart")
+
 const grid = document.getElementById("card-grid");
+
+const storageCart = localStorage.getItem("cart");
+const storageCartJson = JSON.parse(storageCart)
 
 
 for(let i=0;i<6;i++){
@@ -17,22 +23,27 @@ for(let i=0;i<6;i++){
 
 
 
-const cart = document.getElementById("cart")
-var cartJsonString = "{Hampers:["
+var cartJsonString = `{"hampers":[`
 
 const cart_btn = document.getElementById("cart_btn")
 var goToCheckout = false
 cart_btn.addEventListener("click",function(){
     for(let i=0;i<6;i++){
         if(parseInt(document.getElementById("cart_counter_"+i).innerText)>0){
-            cartJsonString += `{"Hamper_`+(i+1)+`" : `+ document.getElementById("cart_counter_"+i).innerText+`},`
+            if(!goToCheckout){
+                cartJsonString += `{"name": "Hamper_`+(i+1)+`", "value": `+ document.getElementById("cart_counter_"+i).innerText+`}`
+            }
+            else{
+                cartJsonString += `,{"name": "Hamper_`+(i+1)+`", "value": `+ document.getElementById("cart_counter_"+i).innerText+`}`
+            }
             goToCheckout = true
         }
 }
 cartJsonString += "]}"
-
+console.log(cartJsonString)
+const cartJson = JSON.parse(cartJsonString)
     if(goToCheckout){
-    localStorage.setItem("cart",cartJsonString)   
+    localStorage.setItem("cart",JSON.stringify(cartJson))   
     window.open("/HTML/checkout.html","_parent")
     }
     else{
@@ -62,4 +73,17 @@ for(let i =0; i<6; i++){
         
         }
     })
+}
+
+
+
+var cartSum = 0
+if(storageCartJson != null){
+
+    for(let i =0;i<storageCartJson.hampers.length; i++){
+        document.getElementById("cart_counter_"+i).innerText = storageCartJson.hampers[i].value
+        cartSum += storageCartJson.hampers[i].value
+    }
+    cart.innerText= parseInt(cartSum)
+
 }
