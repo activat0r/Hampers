@@ -37,7 +37,7 @@ cart_btn.addEventListener("click",function(){
     }
     if(goToCheckout){
     localStorage.setItem("cart",JSON.stringify(cartJson))   
-    window.open("/HTML/checkout.html","_parent")
+    window.open("./HTML/checkout.html","_parent")
     }
     else{
         alert("Please add something to cart first")
