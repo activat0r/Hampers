@@ -23,25 +23,18 @@ for(let i=0;i<6;i++){
 
 
 
-var cartJsonString = `{"hampers":[`
+var cartJson =[]
 
 const cart_btn = document.getElementById("cart_btn")
 var goToCheckout = false
 cart_btn.addEventListener("click",function(){
     for(let i=0;i<6;i++){
         if(parseInt(document.getElementById("cart_counter_"+i).innerText)>0){
-            if(!goToCheckout){
-                cartJsonString += `{"name": "Hamper_`+(i+1)+`", "value": `+ document.getElementById("cart_counter_"+i).innerText+`}`
-            }
-            else{
-                cartJsonString += `,{"name": "Hamper_`+(i+1)+`", "value": `+ document.getElementById("cart_counter_"+i).innerText+`}`
-            }
-            goToCheckout = true
+            data={id: i+1, value : parseInt(document.getElementById("cart_counter_"+i).innerText)}
+            cartJson.push(data)
+            goToCheckout=true
         }
-}
-cartJsonString += "]}"
-console.log(cartJsonString)
-const cartJson = JSON.parse(cartJsonString)
+    }
     if(goToCheckout){
     localStorage.setItem("cart",JSON.stringify(cartJson))   
     window.open("/HTML/checkout.html","_parent")
@@ -80,9 +73,9 @@ for(let i =0; i<6; i++){
 var cartSum = 0
 if(storageCartJson != null){
 
-    for(let i =0;i<storageCartJson.hampers.length; i++){
-        document.getElementById("cart_counter_"+i).innerText = storageCartJson.hampers[i].value
-        cartSum += storageCartJson.hampers[i].value
+    for(let i =0;i<storageCartJson.length; i++){     
+        document.getElementById("cart_counter_"+(parseInt(storageCartJson[i].id)-1)).innerText = parseInt(storageCartJson[i].value)
+        cartSum += parseInt(storageCartJson[i].value)
     }
     cart.innerText= parseInt(cartSum)
 
